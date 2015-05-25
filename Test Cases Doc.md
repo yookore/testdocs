@@ -12,196 +12,197 @@ Test Cases
 7.gender: Male<br/>
 8.password: password
 
-**Steps**
+**Steps**<br/>
 1. creates account
 
-**Expected output** 1. firstname:  John 2. lastname:  Baptist 3. email: john@yookos.com 4. cellphone: +278497
+**Expected output**<br/> 1. firstname:  John<br/> 2. lastname:  Baptist<br/> 3. email: john@yookos.com<br/> 4. cellphone: +278497
 ———————————————————————————————————————————————————————
 
 #User Exists#
 
-**Input Test Data** 1. email: john@yookos.com
+**Input Test Data**<br/> 1. email: john@yookos.com
 
-**Steps** 1. Checks if the user exists.
+**Steps**<br/> 1. Checks if the user exists.
 
-**Expected output** 1. email: john@yookos.com 2. firstname: John 3. lastname: Baptist
+**Expected output**<br/> 1. email: john@yookos.com<br/> 2. firstname: John<br/> 3. lastname: Baptist
 ———————————————————————————————————————————————————————
 
 #Get list of friends#
 
-**Input Test Data** 1. username: johnbap 2. filter: all
+**Input Test Data**<br/> 1. username: johnbap<br/> 2. filter: all
 
-**Steps** 1. Gets a list of friends.
+**Steps**<br/> 1. Gets a list of friends.
 
-**Expected output** 1. list: list of friends 2. username: johnbap 3. friendaccount:
+**Expected output**<br/> 1. list: list of friends<br/> 2. username: johnbap<br/> 3. friendaccount:
 ———————————————————————————————————————————————————————
 
 #Accept Friend#
 
-**Input Test Data** 1. username: johnbap 2. targetUsername: ginald
+**Input Test Data**<br/> 1. username: johnbap<br/> 2. targetUsername: ginald
 
-**Steps** 1. Accepts a friend.
-**Expected output** 1. username: johnbap 3. status: accepted
+**Steps**<br/> 1. Accepts a friend.<br/>
+
+**Expected output**<br/> 1. username: johnbap<br/> 3. status: accepted
 ———————————————————————————————————————————————————————
 #Reject Friend#
 
-**Input Test Data** 1. username: johnbap 2. targetUsername: ginald
+**Input Test Data**<br/> 1. username: johnbap<br/> 2. targetUsername: ginald
 
-**Steps** 1. Accepts a friend.
+**Steps**<br/> 1. Accepts a friend.
 
-**Expected output** 1. username: johnbap 3. status: rejected
+**Expected output**<br/> 1. username: johnbap<br/> 3. status: rejected
 ———————————————————————————————————————————————————————
 
 #Native Login#
 
-**Input Test Data**  1. email: john@yookos.com  2. password: password
+**Input Test Data**<br/>  1. email: john@yookos.com<br/>  2. password: password<br/>
 
-**Steps** 1. Native Login
+**Steps**<br/> 1. Native Login
 
-**Expected output** 1. firstname:  John 2. lastname:  Baptist 3. email: john@yookos.com 4. cellphone: +278497 5. username: johnbap 6. profileimageurl: https://profileimageurl
+**Expected output**<br/> 1. firstname:  John<br/> 2. lastname:  Baptist<br/> 3. email: john@yookos.com<br/> 4. cellphone: +278497<br/> 5. username: johnbap<br/> 6. profileimageurl: https://profileimageurl<br/>
 ———————————————————————————————————————————————————————
 
 #Post Blog#
 
-**Input Test Data**  1. username: johnbap  2. title: Apostle  3. text: This is a blog post text  4. tags: #myblog  5. mention: @ginald  6. photo: photoUrl  7. videos: videoUrl  8. audio: audioUrl
+**Input Test Data**<br/>  1. username: johnbap<br/>  2. title: Apostle<br/>  3. text: This is a blog post text<br/>  4. tags: #myblog<br/>  5. mention: @ginald<br/>  6. photo: photoUrl<br/>  7. videos: videoUrl<br/>  8. audio: audioUrl
 
-**Steps** 1. Posts blog
+**Steps**<br/> 1. Posts blog
 
-**Expected output**  1. username: johnbap  2. title: Apostle  3. text: This is a blog post text  4. tags: #myblog  5. mention: @ginald  6. photo: photoUrl  7. videos: videoUrl  8. audio: audioUrl
+**Expected output**<br/>  1. username: johnbap<br/>  2. title: Apostle<br/>  3. text: This is a blog post text<br/>  4. tags: #myblog<br/>  5. mention: @ginald<br/>  6. photo: photoUrl<br/>  7. videos: videoUrl<br/>  8. audio: audioUrl<br/>
 ———————————————————————————————————————————————————————
 
 #Get Blog#
 
-**Input Test Data**  1. postid: postid
+**Input Test Data**<br/>  1. postid: postid
 
-**Steps** 1. Gets blog
+**Steps**<br/> 1. Gets blog
 
-**Expected output**  1. blogpostid: posted  2. text: Blog text here  3. actor: firstname: John lastname: Baptist profilepicthure: imgurl  4. creation date: 17/05/2015  5. modificationdate: 17/05/2015  6. comments: link: https://commentlink, action:remove, firstname:John, lastname:Baptist, 			profilepic:imgUrl, creationdate:17/05/2015, username:johnbap,
- 7. like: link: https://likelink, action:unlike, firstname:John, lastname:Baptist   8. commentcount: 23  9. likecount: 44 10. viewcount: 56 11. mentions: profilelink:https://profile/johnbap, firstname:John, lastname:Baptist 12. tag: #john 13. attachment: attachUrl
+**Expected output**<br/>  1. blogpostid: posted<br/>  2. text: Blog text here<br/>  3. actor: firstname: John lastname: Baptist profilepicthure: imgurl<br/>  4. creation date: 17/05/2015<br/>  5. modificationdate: 17/05/2015<br/>  6. comments: link: https://commentlink, action:remove, firstname:John, lastname:Baptist, 			<br/>profilepic:imgUrl, creationdate:17/05/2015, username:johnbap,<br/>
+ 7. like: link: https://likelink, action:unlike, firstname:John, lastname:Baptist <br/>  8. commentcount: 23<br/>  9. likecount: 44<br/> 10. viewcount: 56<br/> 11. mentions: profilelink:https://profile/johnbap, firstname:John, lastname:Baptist<br/> 12. tag: #john<br/> 13. attachment: attachUrl<br/>
 ———————————————————————————————————————————————————————
 
 #Post Audio#
 
-**Input Test Data**  1. username: johnap  2. caption: Photo caption  3. audioData
+**Input Test Data**<br/>  1. username: johnap<br/>  2. caption: Photo caption<br/>  3. audioData<br/>
 
-**Steps** 1. Posts Audio
+**Steps**<br/> 1. Posts Audio
 
-**Expected output**  1. caption: Photo caption
+**Expected output**<br/>  1. caption: Photo caption
 ———————————————————————————————————————————————————————
 
 #Get Audio Post#
 
-**Input Test Data**  1. audioId: audioId
+**Input Test Data**<br/>  1. audioId: audioId
 
-**Steps** 1. Gets audio post
+**Steps**<br/> 1. Gets audio post
 
-**Expected output**  1. audio: posted  2. text: audio text here  3. title: audio title here  4. actor: firstname: John, lastname: Baptist, profilepicthure: imgurl  5. creation date: 17/05/2015  6. modificationdate: 17/05/2015  7. comments: link: https://commentlink, action:remove, firstname:John, lastname:Baptist, 			profilepic:imgUrl, creationdate:17/05/2015, username:johnbap,
- 8. like: link: https://likelink, action:unlike, firstname:John, lastname:Baptist   9. commentcount: 23  10. likecount: 44 11. viewcount: 56 12. mentions: profilelink:https://profile/johnbap, firstname:John, lastname:Baptist 13. tag: #john 
+**Expected output**<br/>  1. audio: posted<br/>  2. text: audio text here<br/>  3. title: audio title here<br/>  4. actor: firstname: John, lastname: Baptist, profilepicthure: imgurl<br/>  5. creation date: 17/05/2015<br/>  6. modificationdate: 17/05/2015<br/>  7. comments: link: https://commentlink, action:remove, firstname:John, lastname:Baptist, 			<br/>profilepic:imgUrl, creationdate:17/05/2015, username:johnbap,<br/>
+ 8. like: link: https://likelink, action:unlike, firstname:John, lastname:Baptist <br/>  9. commentcount: 23<br/>  10. likecount: 44<br/> 11. viewcount: 56<br/> 12. mentions: profilelink:https://profile/johnbap, firstname:John, lastname:Baptist<br/> 13. tag: #john<br/> 
 ———————————————————————————————————————————————————————
 
 #Post Status#
 
-**Input Test Data**  1. username: johnbap  2. text: This is a status Update Text  3. mention: @ginald  4. photo: photoUrl  5. videos: videoUrl  6. location: Randburg
+**Input Test Data**<br/>  1. username: johnbap<br/>  2. text: This is a status Update Text<br/>  3. mention: @ginald<br/>  4. photo: photoUrl<br/>  5. videos: videoUrl<br/>  6. location: Randburg<br/>
 
-**Steps** 1. Posts a status message
+**Steps**<br/> 1. Posts a status message
 
-**Expected output**  1. username: johnbap  2. text: This is a blog post text
+**Expected output**<br/>  1. username: johnbap<br/>  2. text: This is a blog post text<br/>
 ———————————————————————————————————————————————————————
 
 #Get Status Update#
 
-**Input Test Data**  1. statusupdateid: statusId
+**Input Test Data**<br/>  1. statusupdateid: statusId
 
-**Steps** 1. Gets Status Message
+**Steps**<br/> 1. Gets Status Message
 
-**Expected output**  1. statusupdateid: statusId  2. text: audio text here  3. actor: firstname: John, lastname: Baptist, profilepicthure: imgurl  4. creation date: 17/05/2015  5. modificationdate: 17/05/2015  6. comments: link: https://commentlink, action:remove, firstname:John, lastname:Baptist, 			profilepic:imgUrl, creationdate:17/05/2015, username:johnbap,
- 7. like: link: https://likelink, action:unlike, firstname:John, lastname:Baptist   8. commentcount: 23  9. likecount: 44 10. viewcount: 56 11. mentions: profilelink:https://profile/johnbap, firstname:John, lastname:Baptist 12. tag: #john 13. attachment: attachUrl
+**Expected output**<br/>  1. statusupdateid: statusId<br/>  2. text: audio text here<br/>  3. actor: firstname: John, lastname: Baptist, profilepicthure: imgurl<br/>  4. creation date: 17/05/2015<br/>  5. modificationdate: 17/05/2015<br/>  6. comments: link: https://commentlink, action:remove, firstname:John, lastname:Baptist, 			<br/>profilepic:imgUrl, creationdate:17/05/2015, username:johnbap,<br/>
+ 7. like: link: https://likelink, action:unlike, firstname:John, lastname:Baptist <br/>  8. commentcount: 23<br/>  9. likecount: 44<br/> 10. viewcount: 56<br/> 11. mentions: profilelink:https://profile/johnbap, firstname:John, lastname:Baptist<br/> 12. tag: #john<br/> 13. attachment: attachUrl<br/>
 ———————————————————————————————————————————————————————
 
 #Update Profile Native#
 
-**Input Test Data**  1. currentCity: Egypt City  2. homeCountry: Egypt  3. homeTown: Galilee  4. relationshipStatus: Single  5. interests: Jesus
+**Input Test Data**<br/>  1. currentCity: Egypt City<br/>  2. homeCountry: Egypt<br/>  3. homeTown: Galilee<br/>  4. relationshipStatus: Single<br/>  5. interests: Jesus<br/>
 
-**Steps** 1. Updates Profile Native
+**Steps**<br/> 1. Updates Profile Native
 
-**Expected output**  1. userid: 23  2. sessionid: 321 ———————————————————————————————————————————————————————
+**Expected output**<br/>  1. userid: 23<br/>  2. sessionid: 321<br/> ———————————————————————————————————————————————————————
 
 #Update Profile Responsive Web#
 
-**Input Test Data**  1. email: john@yookos.com  2. dob: 1950/05/17  3. relationshipstatus: single  4. currentcountry: Egypt  5. biography: Jesus’s deciple  6. cellphone: +278497  7. firstname: John  8. lastname: Baptist  9. gender: Male  10. alternativeemail: john@gmail.com  11. homecountry: Egypt  12. timezone: Africa  13. imageurl: https://imageurl  14. title: Apostle  15. lastupdated: 17/05/2015  16. hometown: Galilee  17. currentcity: Egypt City  18. username: johnbap  19. interests: Jesus
+**Input Test Data**<br/>  1. email: john@yookos.com<br/>  2. dob: 1950/05/17<br/>  3. relationshipstatus: single<br/>  4. currentcountry: Egypt<br/>  5. biography: Jesus’s deciple<br/>  6. cellphone: +278497<br/>  7. firstname: John<br/>  8. lastname: Baptist<br/>  9. gender: Male<br/>  10. alternativeemail: john@gmail.com<br/>  11. homecountry: Egypt<br/>  12. timezone: Africa<br/>  13. imageurl: https://imageurl<br/>  14. title: Apostle<br/>  15. lastupdated: 17/05/2015<br/>  16. hometown: Galilee<br/>  17. currentcity: Egypt City<br/>  18. username: johnbap<br/>  19. interests: Jesus<br/>
 
-**Steps** 1. Updates Profile Responsive Web
+**Steps**<br/> 1. Updates Profile Responsive Web
 
-**Expected output**  1. userid: 23  2. sessionid: 321
+**Expected output**<br/>  1. userid: 23<br/>  2. sessionid: 321
 ———————————————————————————————————————————————————————
 
 #Post profile picture#
 
-**Input Test Data**  1. imageUrl: imgUrl  2. username: johnbap
+**Input Test Data**<br/>  1. imageUrl: imgUrl<br/>  2. username: johnbap
 
-**Steps** 1. Gets the profile pic image
+**Steps**<br/> 1. Gets the profile pic image
 
-**Expected output**  1. userid: 23  2. sessionid: 321
+**Expected output**<br/>  1. userid: 23<br/>  2. sessionid: 321
 ———————————————————————————————————————————————————————
 
 #Gets profile#
 
-**Input Test Data**  1. username: johnbap
+**Input Test Data**<br/>  1. username: johnbap
 
-**Steps** 1. Gets Profile data
+**Steps**<br/> 1. Gets Profile data
 
-**Expected output**  1. email: john@yookos.com  2. dob: 1950/05/17  3. relationshipstatus: single  4. currentcountry: Egypt  5. biography: Jesus’s deciple  6. cellphone: +278497  7. firstname: John  8. lastname: Baptist  9. gender: Male  10. alternativeemail: john@gmail.com  11. homecountry: Egypt  12. timezone: Africa  13. imageurl: https://imageurl  14. title: Apostle  15. lastupdated: 17/05/2015  16. hometown: Galilee  17. currentcity: Egypt City  18. username: johnbap  19. interests: Jesus
+**Expected output**<br/>  1. email: john@yookos.com<br/>  2. dob: 1950/05/17<br/>  3. relationshipstatus: single<br/>  4. currentcountry: Egypt<br/>  5. biography: Jesus’s deciple<br/>  6. cellphone: +278497<br/>  7. firstname: John<br/>  8. lastname: Baptist<br/>  9. gender: Male<br/>  10. alternativeemail: john@gmail.com<br/>  11. homecountry: Egypt<br/>  12. timezone: Africa<br/>  13. imageurl: https://imageurl<br/>  14. title: Apostle<br/>  15. lastupdated: 17/05/2015<br/>  16. hometown: Galilee<br/>  17. currentcity: Egypt City<br/>  18. username: johnbap<br/>  19. interests: Jesus
 ———————————————————————————————————————————————————————
 
 #Sign Up/Create Account Social#
 
-**Input Test Data**  1. firstname:  John  2. lastname:  Baptist  3. email: john@yookos.com  4. country: Egypt  5. dob: 1979/05/17  6. cellphone: +278497  7. gender: Male  8. password: password  9. verified: false  10. locale: GMT+2  11. timezone: 2  12. updated: 17/05/2015  13. fullnames: John Baptist
+**Input Test Data**<br/>  1. firstname:  John<br/>  2. lastname:  Baptist<br/>  3. email: john@yookos.com<br/>  4. country: Egypt<br/>  5. dob: 1979/05/17<br/>  6. cellphone: +278497<br/>  7. gender: Male<br/>  8. password: password<br/>  9. verified: false<br/>  10. locale: GMT+2<br/>  11. timezone: 2<br/>  12. updated: 17/05/2015<br/>  13. fullnames: John Baptist<br/>
 
-**Steps** 1. creates account Social
+**Steps**<br/> 1. creates account Social
 
-**Expected output** 1. firstname:  John 2. lastname:  Baptist 3. email: john@yookos.com 4. cellphone: +278497
+**Expected output**<br/> 1. firstname:  John<br/> 2. lastname:  Baptist<br/> 3. email: john@yookos.com<br/> 4. cellphone: +278497
 ———————————————————————————————————————————————————————
 
 #Social Login#
 
-**Input Test Data**  1. socialProviderEmail: john@yookos.com  2. password: password
+**Input Test Data**<br/>  1. socialProviderEmail: john@yookos.com<br/>  2. password: password
 
-**Steps** 1. Social Login
+**Steps**<br/> 1. Social Login
 
-**Expected output** 1. firstname:  John 2. lastname:  Baptist 3. email: john@yookos.com 4. cellphone: +278497 5. username: johnbap 6. profileimageurl: https://profileimageurl
+**Expected output**<br/> 1. firstname:  John<br/> 2. lastname:  Baptist<br/> 3. email: john@yookos.com<br/> 4. cellphone: +278497<br/> 5. username: johnbap<br/> 6. profileimageurl: https://profileimageurl<br/>
 ———————————————————————————————————————————————————————
 
 #Sms verify User#
 
-**Input Test Data**  1. verificationCode: verif123
+**Input Test Data**<br/>  1. verificationCode: verif123
 
-**Steps** 1. Sms verify user
+**Steps**<br/> 1. Sms verify user
 
-**Expected output** 1. firstname:  John 2. lastname:  Baptist 3. email: john@yookos.com 4. cellphone: +278497 5. username: johnbap 6. country: Egypt 7. verified: true
+**Expected output**<br/> 1. firstname:  John<br/> 2. lastname:  Baptist<br/> 3. email: john@yookos.com<br/> 4. cellphone: +278497<br/> 5. username: johnbap<br/> 6. country: Egypt<br/> 7. verified: true<br/>
 ———————————————————————————————————————————————————————
 
 #Email verify User#
 
-**Input Test Data**  1. verificationCode: verif123
+**Input Test Data**<br/>  1. verificationCode: verif123
 
-**Steps** 1. Email verify user
+**Steps**<br/> 1. Email verify user
 
-**Expected output** 1. firstname:  John 2. lastname:  Baptist 3. email: john@yookos.com 4. cellphone: +278497 5. username: johnbap 6. country: Egypt 7. verified: true
+**Expected output**<br/> 1. firstname:  John<br/> 2. lastname:  Baptist<br/> 3. email: john@yookos.com<br/> 4. cellphone: +278497<br/> 5. username: johnbap<br/> 6. country: Egypt<br/> 7. verified: true
 ———————————————————————————————————————————————————————
 
 #Email verify access Token#
 
-**Input Test Data**  1. userId: johnbap  2. password: password
+**Input Test Data**<br/>  1. userId: johnbap<br/>  2. password: password
 
-**Steps** 1. Email verify with access Token
+**Steps**<br/> 1. Email verify with access Token
 
-**Expected output** 1. firstname:  John 2. lastname:  Baptist 3. access_token: 123 4. clients: 213 5. refresh_token: 312
+**Expected output**<br/> 1. firstname:  John<br/> 2. lastname:  Baptist<br/> 3. access_token: 123<br/> 4. clients: 213<br/> 5. refresh_token: 312
 ———————————————————————————————————————————————————————
 
 #Email phone verify User#
 
-**Input Test Data**  1. email: john@yookos.com  2. +278497
+**Input Test Data**<br/>  1. email: john@yookos.com<br/>  2. +278497
 
-**Steps** 1. Email phone verify user
+**Steps**<br/> 1. Email phone verify user
 
-**Expected output** 1. firstname:  John 2. lastname:  Baptist 3. email: john@yookos.com 4. cellphone: +278497 5. username: johnbap 6. country: Egypt 7. verified: true
+**Expected output**<br/> 1. firstname:  John<br/> 2. lastname:  Baptist<br/> 3. email: john@yookos.com<br/> 4. cellphone: +278497<br/> 5. username: johnbap<br/> 6. country: Egypt<br/> 7. verified: true<br/>
