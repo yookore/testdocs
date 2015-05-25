@@ -66,7 +66,7 @@ Test Cases
 
 **Input Test Data**<br/>  1. username: johnbap<br/>  2. title: Apostle<br/>  3. text: This is a blog post text<br/>  4. tags: #myblog<br/>  5. mention: @ginald<br/>  6. photo: photoUrl<br/>  7. videos: videoUrl<br/>  8. audio: audioUrl
 
-**Steps**<br/> 1. Posts blog
+**Steps**<br/> 1. Posts a blog
 
 **Expected output**<br/>  1. username: johnbap<br/>  2. title: Apostle<br/>  3. text: This is a blog post text<br/>  4. tags: #myblog<br/>  5. mention: @ginald<br/>  6. photo: photoUrl<br/>  7. videos: videoUrl<br/>  8. audio: audioUrl<br/>
 ———————————————————————————————————————————————————————
@@ -77,7 +77,7 @@ Test Cases
 
 **Steps**<br/> 1. Gets blog
 
-**Expected output**<br/>  1. blogpostid: posted<br/>  2. text: Blog text here<br/>  3. actor: firstname: John lastname: Baptist profilepicthure: imgurl<br/>  4. creation date: 17/05/2015<br/>  5. modificationdate: 17/05/2015<br/>  6. comments: link: https://commentlink, action:remove, firstname:John, lastname:Baptist, 			<br/>profilepic:imgUrl, creationdate:17/05/2015, username:johnbap,<br/>
+**Expected output**<br/>  1. blogpostid: posted<br/>  2. text: Blog text here<br/>  3. actor: firstname: John lastname: Baptist profilepicthure: imgurl<br/>  4. creation date: 17/05/2015<br/>  5. modificationdate: 17/05/2015<br/>  6. comments: link: https://commentlink, action:remove, firstname:John, lastname:Baptist,  <br/>profilepic:imgUrl, creationdate:17/05/2015, username:johnbap<br/>
  7. like: link: https://likelink, action:unlike, firstname:John, lastname:Baptist <br/>  8. commentcount: 23<br/>  9. likecount: 44<br/> 10. viewcount: 56<br/> 11. mentions: profilelink:https://profile/johnbap, firstname:John, lastname:Baptist<br/> 12. tag: #john<br/> 13. attachment: attachUrl<br/>
 ———————————————————————————————————————————————————————
 
@@ -96,8 +96,8 @@ Test Cases
 
 **Steps**<br/> 1. Gets audio post
 
-**Expected output**<br/>  1. audio: posted<br/>  2. text: audio text here<br/>  3. title: audio title here<br/>  4. actor: firstname: John, lastname: Baptist, profilepicthure: imgurl<br/>  5. creation date: 17/05/2015<br/>  6. modificationdate: 17/05/2015<br/>  7. comments: link: https://commentlink, action:remove, firstname:John, lastname:Baptist, 			<br/>profilepic:imgUrl, creationdate:17/05/2015, username:johnbap,<br/>
- 8. like: link: https://likelink, action:unlike, firstname:John, lastname:Baptist <br/>  9. commentcount: 23<br/>  10. likecount: 44<br/> 11. viewcount: 56<br/> 12. mentions: profilelink:https://profile/johnbap, firstname:John, lastname:Baptist<br/> 13. tag: #john<br/> 
+**Expected output**<br/>  1. audio: posted<br/>  2. text: audio text here<br/>  3. title: audio title here<br/>  4. actor: firstname: John, lastname: Baptist, profilepicthure: imgurl<br/>  5. creation date: 17/05/2015<br/>  6. modificationdate: 17/05/2015<br/>  7. comments: link: https://commentlink, action:remove, firstname:John, lastname:Baptist, profilepic:imgUrl, creationdate:17/05/2015, username:johnbap<br/>
+ 8. like: link: https://likelink, action:unlike, firstname:John, lastname:Baptist <br/>  9. commentcount: 23<br/>  10. likecount: 44<br/>  11. viewcount: 56<br/>  12. mentions: profilelink:https://profile/johnbap, first-name:John, lastname:Baptist<br/>  13. tag: #john<br/> 
 ———————————————————————————————————————————————————————
 
 #Post Status#
@@ -115,8 +115,8 @@ Test Cases
 
 **Steps**<br/> 1. Gets Status Message
 
-**Expected output**<br/>  1. statusupdateid: statusId<br/>  2. text: audio text here<br/>  3. actor: firstname: John, lastname: Baptist, profilepicthure: imgurl<br/>  4. creation date: 17/05/2015<br/>  5. modificationdate: 17/05/2015<br/>  6. comments: link: https://commentlink, action:remove, firstname:John, lastname:Baptist, 			<br/>profilepic:imgUrl, creationdate:17/05/2015, username:johnbap,<br/>
- 7. like: link: https://likelink, action:unlike, firstname:John, lastname:Baptist <br/>  8. commentcount: 23<br/>  9. likecount: 44<br/> 10. viewcount: 56<br/> 11. mentions: profilelink:https://profile/johnbap, firstname:John, lastname:Baptist<br/> 12. tag: #john<br/> 13. attachment: attachUrl<br/>
+**Expected output**<br/>  1. statusupdateid: statusId<br/>  2. text: audio text here<br/>  3. actor: firstname: John, lastname: Baptist, profilepicthure: imgurl<br/>  4. creation date: 17/05/2015<br/>  5. modificationdate: 17/05/2015<br/>  6. comments: link: https://commentlink, action:remove, firstname:John, lastname:Baptist, 		profilepic:imgUrl, creationdate:17/05/2015, username:johnbap<br/>
+ 7. like: link: https://likelink, action:unlike, firstname:John, lastname:Baptist <br/>  8. commentcount: 23<br/>  9. likecount: 44<br/>  10. viewcount: 56<br/>  11. mentions: profilelink:https://profile/johnbap, firstname:John, lastname:Baptist<br/>  12. tag: #john<br/>  13. attachment: attachUrl<br/>
 ———————————————————————————————————————————————————————
 
 #Update Profile Native#
