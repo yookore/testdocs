@@ -2,9 +2,18 @@ Test Cases
 
 #Sign Up/Create Account#
 
-**Input Test Data** 1. firstname:  John 2. lastname:  Baptist 3. email: john@yookos.com 4. country: Egypt 5. dob: 1979/05/17 6. cellphone: +278497 7. gender: Male 8. password: password
+**Input Test Data**
+1. firstname: John
+2. lastname: Baptist
+3. email: john@yookos.com
+4. country: Egypt
+5. dob: 1979/05/17
+6. cellphone: +278497
+7. gender: Male
+8. password: password
 
-**Steps** 1. creates account
+**Steps**
+1. creates account
 
 **Expected output** 1. firstname:  John 2. lastname:  Baptist 3. email: john@yookos.com 4. cellphone: +278497
 ———————————————————————————————————————————————————————
