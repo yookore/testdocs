@@ -43,6 +43,7 @@ This method retrieves the json array payload representing list of matched cities
 
 ---------------------------------------
 
+
 ### Adds a new City
 This method method adds a new City together with the given country in the params(region optional param) or updates the country’s cities if the country already exists.
 
@@ -73,6 +74,7 @@ This method method adds a new City together with the given country in the params
       ```
 
 ---------------------------------------
+
 
 ### Get list of world countries
 This method retrieves the json array payload representing list of world countries.
