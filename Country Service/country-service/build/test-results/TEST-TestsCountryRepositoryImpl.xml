@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="TestsCountryRepositoryImpl" tests="6" skipped="0" failures="0" errors="0" timestamp="2015-06-05T13:43:06" hostname="Tshiamos-MBP.yookos.local" time="0.389">
+  <properties/>
+  <testcase name="testGetCountries" classname="TestsCountryRepositoryImpl" time="0.179"/>
+  <testcase name="testSearchCity" classname="TestsCountryRepositoryImpl" time="0.051"/>
+  <testcase name="testCitiesByRegion" classname="TestsCountryRepositoryImpl" time="0.025"/>
+  <testcase name="testGetRegionsByCountry" classname="TestsCountryRepositoryImpl" time="0.019"/>
+  <testcase name="testConnectToDB" classname="TestsCountryRepositoryImpl" time="0.03"/>
+  <testcase name="testAddCityData" classname="TestsCountryRepositoryImpl" time="0.083"/>
+  <system-out><![CDATA[driver true
+Successfully connected to database using TCP/IP...
+City Table failed to create
+Region Table failed to create
+Country Table failed to create
+Cities inserted
+Regions inserted
+Countries inserted
+:: about to make a connection to our repo ::
+test.db is deleted
+driver true
+Successfully connected to database using TCP/IP...
+City Table failed to create
+Region Table failed to create
+Country Table failed to create
+Cities inserted
+Regions inserted
+Countries inserted
+:: about to make a connection to our repo ::
+SELECT cit_id, cit_name, City.rig_id, Region.con_id, rig_name, con_name  FROM Country, Region, City  WHERE UPPER(cit_name) like UPPER('%Ba%')  AND City.rig_id = Region.rig_id AND Region.con_id = Country.con_id  ORDER BY LENGTH(cit_name)  LIMIT 30 OFFSET 00test.db is deleted
+driver true
+Successfully connected to database using TCP/IP...
+City Table failed to create
+Region Table failed to create
+Country Table failed to create
+Cities inserted
+Regions inserted
+Countries inserted
+:: about to make a connection to our repo ::
+test.db is deleted
+driver true
+Successfully connected to database using TCP/IP...
+City Table failed to create
+Region Table failed to create
+Country Table failed to create
+Cities inserted
+Regions inserted
+Countries inserted
+:: about to make a connection to our repo ::
+test.db is deleted
+driver true
+Successfully connected to database using TCP/IP...
+City Table failed to create
+Region Table failed to create
+Country Table failed to create
+Cities inserted
+Regions inserted
+Countries inserted
+test.db is deleted
+driver true
+Successfully connected to database using TCP/IP...
+City Table failed to create
+Region Table failed to create
+Country Table failed to create
+Cities inserted
+Regions inserted
+Countries inserted
+
+SELECT con_id, con_name FROM Country WHERE UPPER(con_name) = UPPER('South Africa'):: about to make a connection to our repo ::
+
+INSERT INTO Country (con_name) VALUES ('South Africa')
+SELECT con_id FROM Country  WHERE con_name = 'South Africa'
+SELECT rig_id FROM Region  WHERE con_id = 4 AND  rig_name = 'Gauteng'
+SELECT cit_id FROM City  WHERE rig_id = 130 AND  cit_name = 'Johannesburg'
+SELECT con_id, con_name FROM Country WHERE UPPER(con_name) = UPPER('South Africa')
+SELECT cit_id, Region.rig_id FROM City, Country, Region  WHERE City.rig_id = Region.rig_id AND  Region.con_id = 4 AND  UPPER(cit_name) = UPPER('Randburg')
+SELECT rig_id FROM Region  WHERE con_id = 4 AND  UPPER(rig_name) = UPPER('Gauteng')
+SELECT cit_id FROM City  WHERE rig_id = 130 AND  cit_name = 'Randburg'
+SELECT con_id, con_name FROM Country WHERE UPPER(con_name) = UPPER('South Africa')
+SELECT cit_id, Region.rig_id FROM City, Country, Region  WHERE City.rig_id = Region.rig_id AND  Region.con_id = 4 AND  UPPER(cit_name) = UPPER('Johannesburg')
+SELECT rig_name, con_id FROM Region  WHERE rig_id = 130test.db is deleted
+]]></system-out>
+  <system-err><![CDATA[]]></system-err>
+</testsuite>
