@@ -64,11 +64,11 @@ This method method adds a new City together with the given country in the params
       ```
     + Payload
     
-      ```
-                            ------WebKitFormBoundaryNFVXSZm2W1vSnnBy-------<br/>
-      Content-Disposition: form-data; city=“Joburg”; country="South Africa“; region=“Gauteng”(OPTIONAL)<br/>
+    ```
+                            ------WebKitFormBoundaryNFVXSZm2W1vSnnBy-------
+      Content-Disposition: form-data; city=“Joburg”; country="South Africa“; region=“Gauteng”(OPTIONAL)
       Content-Type: multipart/form-data
-      ```
+    ```
 
     ```
     + Response Payload (newly added city data)
@@ -93,8 +93,7 @@ This method retrieves the json array payload representing list of world countrie
       ```
       Content-Type : application/json
       ```
-    <br/>
-
+<br/>
     ```
     + Response Payload
     [
