@@ -93,7 +93,8 @@ This method retrieves the json array payload representing list of world countrie
       ```
       Content-Type : application/json
       ```
-<br/>
+    + Payload
+    
     ```
     + Response Payload
     [
