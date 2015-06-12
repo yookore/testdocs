@@ -66,8 +66,8 @@ This method method adds a new City together with the given country in the params
     
     ```
                             ------WebKitFormBoundaryNFVXSZm2W1vSnnBy-------
-      Content-Disposition: form-data; city=“Joburg”; country="South Africa“; region=“Gauteng”(OPTIONAL)
-      Content-Type: multipart/form-data
+    Content-Disposition: form-data; city=“Joburg”; country="South Africa“; region=“Gauteng”(OPTIONAL)
+    Content-Type: multipart/form-data
     ```
 
     ```
