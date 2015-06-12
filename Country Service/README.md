@@ -15,33 +15,39 @@ This method retrieves the json array payload representing list of matched cities
 + Request
     + Method
       ```
-      **GET** /countryserivce/city/:cityname HTTP/1.1
+        **GET** /countryserivce/city/:cityname HTTP/1.1
       ```
     + Headers
       ```
       Content-Type : application/json
       ```
     
-    ——-Params——--
-    optional query params with default values: limit=“40”; page=“1”;
-
-
-      ```
+    <br/>-——-Params——--
+    <br/>
+    ```
+        optional query params with default values:
+        limit=“40”; page=“1”;
+    ```
+    
+    ```
     + Response Payload
-      ```
-    [{
-        “city”: “{“cit_id”:”2983712”,“cit_name”:”Joburg”,”rig_id”:”20181”}”,
-        “region”: “{“rig_id”:”20181”,”rig_name”:”Gauteng”,”con_id”:”213”}”,
-        “country”: “{“con_id”:”213”,”con_name”:”South Africa”}”
-    },
-    {
-        “city”: “{“cit_id”:”2983712”,“cit_name”:”Joburg”,”rig_id”:”20181”}”,
-        “region”: “{“rig_id”:”20181”,”rig_name”:”Gauteng”,”con_id”:”213”}”,
-        “country”: “{“con_id”:”213”,”con_name”:”South Africa”}”
-    }…]
-      ```
+    [
+        ...
+        {
+            “city”: “{“cit_id”:”2983712”,“cit_name”:”Joburg”,”rig_id”:”20181”}”,
+            “region”: “{“rig_id”:”20181”,”rig_name”:”Gauteng”,”con_id”:”213”}”,
+            “country”: “{“con_id”:”213”,”con_name”:”South Africa”}”
+        },
+        {
+            “city”: “{“cit_id”:”2983712”,“cit_name”:”Joburg”,”rig_id”:”20181”}”,
+            “region”: “{“rig_id”:”20181”,”rig_name”:”Gauteng”,”con_id”:”213”}”,
+            “country”: “{“con_id”:”213”,”con_name”:”South Africa”}”
+        }
+        ...
+    ]
+    ```
 
----------------------------------------
+------------------------------------------------------------------------------
 
 
 ### Adds a new City
@@ -58,22 +64,21 @@ This method method adds a new City together with the given country in the params
       ```
     + Payload
       ```
-      ------WebKitFormBoundaryNFVXSZm2W1vSnnBy
+      ------WebKitFormBoundaryNFVXSZm2W1vSnnBy-------
       Content-Disposition: form-data; city=“Joburg”; country="South Africa“; region=“Gauteng”
       Content-Type: multipart/form-data
+    ```
 
-
-      ```
+    ```
     + Response Payload (newly added city data)
-      ```
     {
         “city”: “{“cit_id”:”2983712”,”rig_id”:”20181”,“cit_name”:”Joburg”}”,
         “region”: “{“rig_id”:”20181”,”con_id”:”213”,”rig_name”:”Gauteng”}”,
         “country”: “{“con_id”:”213”,”con_name”:”South Africa”}”
     }
-      ```
+    ```
 
----------------------------------------
+------------------------------------------------------------------------------
 
 
 ### Get list of world countries
@@ -91,12 +96,12 @@ This method retrieves the json array payload representing list of world countrie
 
       ```
     + Response Payload
-      ```
-    [{"con_id":1,"con_Name":"Afghanistan","_links":
-       {"regions":{"href":"http://localhost:8080/countryservice/1/regions"}}},
-     {"con_id":2,"con_Name":"Albania","_links":
-       {"regions":{"href":"http://localhost:8080/countryservice/2/regions"}}}
+    [
+        {"con_id":1,"con_Name":"Afghanistan","_links":
+        {"regions":{"href":"http://localhost:8080/countryservice/1/regions"}}},
+        {"con_id":2,"con_Name":"Albania","_links":
+        {"regions":{"href":"http://localhost:8080/countryservice/2/regions"}}}
     …]
       ```
 
----------------------------------------
+------------------------------------------------------------------------------
