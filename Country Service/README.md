@@ -21,8 +21,8 @@ This method retrieves the json array payload representing list of matched cities
       ```
       Content-Type : application/json
       ```
-    
-    <br/>-——-Params——--
+      
+    -——-Params——--
     <br/>
     ```
         optional query params with default values:
@@ -63,9 +63,10 @@ This method method adds a new City together with the given country in the params
       Content-Type : multipart/form-data
       ```
     + Payload
+    
       ```
-      ------WebKitFormBoundaryNFVXSZm2W1vSnnBy-------
-      Content-Disposition: form-data; city=“Joburg”; country="South Africa“; region=“Gauteng”(OPTIONAL)
+                            ------WebKitFormBoundaryNFVXSZm2W1vSnnBy-------<br/>
+      Content-Disposition: form-data; city=“Joburg”; country="South Africa“; region=“Gauteng”(OPTIONAL)<br/>
       Content-Type: multipart/form-data
       ```
 
@@ -92,7 +93,7 @@ This method retrieves the json array payload representing list of world countrie
       ```
       Content-Type : application/json
       ```
-
+    <br/>
 
     ```
     + Response Payload
