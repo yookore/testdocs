@@ -65,9 +65,9 @@ This method method adds a new City together with the given country in the params
     + Payload
       ```
       ------WebKitFormBoundaryNFVXSZm2W1vSnnBy-------
-      Content-Disposition: form-data; city=“Joburg”; country="South Africa“; region=“Gauteng”
+      Content-Disposition: form-data; city=“Joburg”; country="South Africa“; region=“Gauteng”(OPTIONAL)
       Content-Type: multipart/form-data
-    ```
+      ```
 
     ```
     + Response Payload (newly added city data)
@@ -94,14 +94,22 @@ This method retrieves the json array payload representing list of world countrie
       ```
 
 
-      ```
+    ```
     + Response Payload
     [
+        ...
         {"con_id":1,"con_Name":"Afghanistan","_links":
-        {"regions":{"href":"http://localhost:8080/countryservice/1/regions"}}},
+            {"regions":
+                {"href":"http://localhost:8080/countryservice/1/regions"}
+            }
+        },
         {"con_id":2,"con_Name":"Albania","_links":
-        {"regions":{"href":"http://localhost:8080/countryservice/2/regions"}}}
-    …]
-      ```
+            {"regions":
+                {"href":"http://localhost:8080/countryservice/2/regions"}
+            }
+        }
+        ...
+    ]
+    ```
 
 ------------------------------------------------------------------------------
