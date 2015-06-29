@@ -1,6 +1,7 @@
 /**
  * Created by tshiamotaukobong on 15/05/28.
  */
+import com.yookos.countryservice.DAO.CountryRepository;
 import com.yookos.countryservice.DAO.Impl.CountryRepositoryImpl;
 
 import com.yookos.countryservice.models.City;
@@ -10,6 +11,9 @@ import com.yookos.countryservice.models.Region;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import static org.junit.Assert.*;
 
 import java.io.File;
@@ -18,8 +22,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
+
 public class TestsCountryRepositoryImpl {
-    private CountryRepositoryImpl service = new CountryRepositoryImpl();
+
+    private CountryRepository service =  new CountryRepositoryImpl();
     /**
      *An embedded database(SQLite) is used for testing purpose. It is created during test and deleted just before the test completes.
       The file is test.db created in root directory of the Intellij Spring Webservice project.
@@ -201,19 +207,19 @@ public class TestsCountryRepositoryImpl {
     public void testAddCityData()
     {
         CityData cityData = service.addCityData("Johannesburg", "Gauteng", "South Africa");
-        assertEquals("City returned unexpected results", "Johannesburg",cityData.getCity().getCit_Name());
-        assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRig_Name());
-        assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCon_Name());
+        assertEquals("City returned unexpected results", "Johannesburg",cityData.getCity().getCit_name());
+        assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRig_name());
+        assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCon_name());
 
         cityData = service.addCityData("Randburg", "Gauteng", "South Africa");
-        assertEquals("City returned unexpected results", "Randburg",cityData.getCity().getCit_Name());
-        assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRig_Name());
-        assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCon_Name());
+        assertEquals("City returned unexpected results", "Randburg",cityData.getCity().getCit_name());
+        assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRig_name());
+        assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCon_name());
 
         cityData = service.addCityData("Johannesburg", "Other", "South Africa");
-        assertEquals("City returned unexpected results", "Johannesburg",cityData.getCity().getCit_Name());
-        assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRig_Name());
-        assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCon_Name());
+        assertEquals("City returned unexpected results", "Johannesburg",cityData.getCity().getCit_name());
+        assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRig_name());
+        assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCon_name());
     }
 
     /**

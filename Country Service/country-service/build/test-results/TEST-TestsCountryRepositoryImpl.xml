@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="TestsCountryRepositoryImpl" tests="6" skipped="0" failures="0" errors="0" timestamp="2015-06-05T13:43:06" hostname="Tshiamos-MBP.yookos.local" time="0.389">
+<testsuite name="TestsCountryRepositoryImpl" tests="6" skipped="0" failures="0" errors="0" timestamp="2015-06-29T07:54:02" hostname="Tshiamos-MBP.yookos.local" time="0.332">
   <properties/>
-  <testcase name="testGetCountries" classname="TestsCountryRepositoryImpl" time="0.179"/>
-  <testcase name="testSearchCity" classname="TestsCountryRepositoryImpl" time="0.051"/>
-  <testcase name="testCitiesByRegion" classname="TestsCountryRepositoryImpl" time="0.025"/>
-  <testcase name="testGetRegionsByCountry" classname="TestsCountryRepositoryImpl" time="0.019"/>
-  <testcase name="testConnectToDB" classname="TestsCountryRepositoryImpl" time="0.03"/>
-  <testcase name="testAddCityData" classname="TestsCountryRepositoryImpl" time="0.083"/>
+  <testcase name="testGetCountries" classname="TestsCountryRepositoryImpl" time="0.046"/>
+  <testcase name="testSearchCity" classname="TestsCountryRepositoryImpl" time="0.161"/>
+  <testcase name="testCitiesByRegion" classname="TestsCountryRepositoryImpl" time="0.011"/>
+  <testcase name="testGetRegionsByCountry" classname="TestsCountryRepositoryImpl" time="0.029"/>
+  <testcase name="testConnectToDB" classname="TestsCountryRepositoryImpl" time="0.018"/>
+  <testcase name="testAddCityData" classname="TestsCountryRepositoryImpl" time="0.064"/>
   <system-out><![CDATA[driver true
 Successfully connected to database using TCP/IP...
 City Table failed to create

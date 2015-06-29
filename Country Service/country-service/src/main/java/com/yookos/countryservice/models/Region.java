@@ -38,7 +38,7 @@ public class Region extends ResourceSupport{
         this.rig_name = rig_name;
     }
 
-    public String getRig_Name() {
+    public String getRig_name() {
         return rig_name;
     }
 }

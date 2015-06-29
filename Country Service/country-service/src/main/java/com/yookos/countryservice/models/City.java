@@ -32,7 +32,7 @@ public class City {
         this.cit_name = cit_name;
     }
 
-    public String getCit_Name() {
+    public String getCit_name() {
         return cit_name;
     }
 }

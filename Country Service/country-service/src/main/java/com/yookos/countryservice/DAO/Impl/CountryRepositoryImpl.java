@@ -6,6 +6,8 @@ import com.yookos.countryservice.models.CityData;
 import com.yookos.countryservice.models.Country;
 import com.yookos.countryservice.models.Region;
 import org.springframework.hateoas.ResourceSupport;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -15,6 +17,7 @@ import java.util.List;
  * Created by tshiamotaukobong on 15/05/19.
  * Private methods(Not included in javadoc) are helper methods for public called methods
  */
+
 public class CountryRepositoryImpl implements CountryRepository {
     private Connection con;
     private ResultSet resultSet;

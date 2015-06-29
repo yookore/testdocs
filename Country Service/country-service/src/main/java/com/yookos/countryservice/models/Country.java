@@ -29,7 +29,7 @@ public class Country extends ResourceSupport {
         this.con_name = con_name;
     }
 
-    public String getCon_Name() {
+    public String getCon_name() {
         return con_name;
     }
 }

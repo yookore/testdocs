@@ -12,6 +12,7 @@ import com.yookos.countryservice.models.City;
 import com.yookos.countryservice.models.CityData;
 import com.yookos.countryservice.models.Country;
 import com.yookos.countryservice.models.Region;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.request.WebRequest;
 
@@ -28,14 +29,12 @@ public class CountryController implements CountryService {
     //private static final String template = "Hello, %s!";
     private CountryRepository conRepository = new CountryRepositoryImpl();
 
-
     private final AtomicLong counter = new AtomicLong();
 
     public  CountryController()
     {
         conRepository.connetToDB();
     }
-
 
     @Override @RequestMapping(value={"/countryservice/{rig_id}/cities"}, method = RequestMethod.GET)
     public List<City> getCitiesByRegion(@PathVariable("rig_id") int rig_id) {
