@@ -5,12 +5,6 @@ import com.yookos.countryservice.models.City;
 import com.yookos.countryservice.models.CityData;
 import com.yookos.countryservice.models.Country;
 import com.yookos.countryservice.models.Region;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.core.env.Environment;
-import org.springframework.hateoas.ResourceSupport;
-import org.springframework.stereotype.Component;
-import org.springframework.stereotype.Repository;
-import org.springframework.stereotype.Service;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -222,7 +216,7 @@ public class CountryRepositoryImpl implements CountryRepository {
         {
             City city = findCity(cit_name,country);
             if(city!=null) // If city is found with the found Country, obviously Region exists.--No new Records
-                return new CityData(city,findRegion(city.getRig_id()),country);
+                return new CityData(city,findRegion(city.getRegion_id()),country);
             else //A region is attempted to be found by name, either as default 'Other' if not provided
             {
                 Region region = findRegion(rig_name,country);
@@ -256,15 +250,15 @@ public class CountryRepositoryImpl implements CountryRepository {
                 if (inserted!=0) {
                     country = getResentInsertedCountry(con_name);
                     statement = con.createStatement();
-                    sqlQ = "\nINSERT INTO Region (rig_name,con_id) VALUES ('"+rig_name+"', "+country.getCon_id()+")";
+                    sqlQ = "\nINSERT INTO Region (rig_name,con_id) VALUES ('"+rig_name+"', "+country.getCountry_id()+")";
                     inserted = statement.executeUpdate(sqlQ);
                     if(inserted!=0) {
-                        region = getResentInsertedRegion(rig_name, country.getCon_id());
+                        region = getResentInsertedRegion(rig_name, country.getCountry_id());
                         statement = con.createStatement();
-                        sqlQ = "\nINSERT INTO City (cit_name,rig_id) VALUES ('"+cit_name+"', "+region.getRig_id()+")";
+                        sqlQ = "\nINSERT INTO City (cit_name,rig_id) VALUES ('"+cit_name+"', "+region.getRegion_id()+")";
                         inserted = statement.executeUpdate(sqlQ);
                         if (inserted!=0)
-                            return new CityData(city=getResentInsertedCity(cit_name,region.getRig_id()),region,country);
+                            return new CityData(city=getResentInsertedCity(cit_name,region.getRegion_id()),region,country);
                     }
                 }
 
@@ -357,15 +351,15 @@ public class CountryRepositoryImpl implements CountryRepository {
             if (con != null && !con.isClosed()) {
 
                 statement = con.createStatement();
-                String sqlQ = "\nINSERT INTO Region (rig_name,con_id) VALUES ('"+rig_name+"', "+country.getCon_id()+")";
+                String sqlQ = "\nINSERT INTO Region (rig_name,con_id) VALUES ('"+rig_name+"', "+country.getCountry_id()+")";
                 int inserted = statement.executeUpdate(sqlQ);
                 if(inserted!=0) {
-                    region = getResentInsertedRegion(rig_name, country.getCon_id());
+                    region = getResentInsertedRegion(rig_name, country.getCountry_id());
                     statement = con.createStatement();
-                    sqlQ = "\nINSERT INTO City (cit_name,rig_id) VALUES ('"+cit_name+"', "+region.getRig_id()+")";
+                    sqlQ = "\nINSERT INTO City (cit_name,rig_id) VALUES ('"+cit_name+"', "+region.getRegion_id()+")";
                     inserted = statement.executeUpdate(sqlQ);
                     if (inserted!=0)
-                        return new CityData(city=getResentInsertedCity(cit_name,region.getRig_id()),region,country);
+                        return new CityData(city=getResentInsertedCity(cit_name,region.getRegion_id()),region,country);
 
                 }
 
@@ -385,10 +379,10 @@ public class CountryRepositoryImpl implements CountryRepository {
         try {
             if (con != null && !con.isClosed()) {
                 statement = con.createStatement();
-                String sqlQ = "\nINSERT INTO City (cit_name,rig_id) VALUES ('"+cit_name+"', "+region.getRig_id()+")";
+                String sqlQ = "\nINSERT INTO City (cit_name,rig_id) VALUES ('"+cit_name+"', "+region.getRegion_id()+")";
                 int inserted = statement.executeUpdate(sqlQ);
                 if (inserted!=0)
-                    return new CityData(city=getResentInsertedCity(cit_name,region.getRig_id()),region,country);
+                    return new CityData(city=getResentInsertedCity(cit_name,region.getRegion_id()),region,country);
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -424,12 +418,12 @@ public class CountryRepositoryImpl implements CountryRepository {
             if (con != null && !con.isClosed()) {
                 statement = con.createStatement();
                 String sqlQ = "\nSELECT rig_id FROM Region " +
-                        " WHERE con_id = "+country.getCon_id()+" AND " +
+                        " WHERE con_id = "+country.getCountry_id()+" AND " +
                         " UPPER(rig_name) = UPPER('"+rig_name+"')";
                 resultSet = statement.executeQuery(sqlQ);
                 System.out.print(sqlQ);
                 if(resultSet.next())
-                    return new Region(resultSet.getInt(1),rig_name, country.getCon_id());
+                    return new Region(resultSet.getInt(1),rig_name, country.getCountry_id());
             }
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -466,7 +460,7 @@ public class CountryRepositoryImpl implements CountryRepository {
                 statement = con.createStatement();
                 String sqlQ = "\nSELECT cit_id, Region.rig_id FROM City, Country, Region " +
                         " WHERE City.rig_id = Region.rig_id AND " +
-                        " Region.con_id = "+country.getCon_id()+" AND " +
+                        " Region.con_id = "+country.getCountry_id()+" AND " +
                         " UPPER(cit_name) = UPPER('"+cit_name+"')";
                 resultSet = statement.executeQuery(sqlQ);
                 System.out.print(sqlQ);

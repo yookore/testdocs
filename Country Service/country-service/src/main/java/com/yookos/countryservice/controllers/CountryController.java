@@ -1,35 +1,22 @@
 package com.yookos.countryservice.controllers;
 
-import java.io.IOException;
 import java.util.List;
-import java.util.Map;
-import java.util.concurrent.atomic.AtomicLong;
+
 import static org.springframework.hateoas.mvc.ControllerLinkBuilder.*;
 
 import com.yookos.countryservice.DAO.CountryRepository;
 import com.yookos.countryservice.DAO.Impl.CountryRepositoryImpl;
 import com.yookos.countryservice.exceptions.ResourceNotFoundException;
-import com.yookos.countryservice.models.City;
-import com.yookos.countryservice.models.CityData;
-import com.yookos.countryservice.models.Country;
-import com.yookos.countryservice.models.Region;
+import com.yookos.countryservice.models.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.context.request.WebRequest;
 
-import javax.annotation.Resource;
-import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRequest;
-import javax.servlet.ServletResponse;
-import javax.servlet.http.HttpServletResponse;
 
 @RestController
-@RequestMapping("/countryservice")
+@RequestMapping("/api/v1/countryservice")
 public class CountryController implements CountryService {
 
-    //private static final String template = "Hello, %s!";
 
     private CountryRepository conRepository;
 
@@ -39,32 +26,36 @@ public class CountryController implements CountryService {
         this.conRepository.connetToDB();
     }
 
-    @Override @RequestMapping(value={"/regions/{rig_id}/cities"}, method = RequestMethod.GET)
+    @Override
+    @RequestMapping(value={"/regions/{rig_id}/cities"}, method = RequestMethod.GET)
     public List<City> getCitiesByRegion(@PathVariable("rig_id") int rig_id) {
         List<City> cities = conRepository.getCitiesByRegion(rig_id);
         if(cities.size()==0) throw new ResourceNotFoundException("Region id " + rig_id + " doesn't exist");
         return cities;
     }
 
-    @Override @RequestMapping(value = {"/countries/{con_id}/regions"}, method = RequestMethod.GET)
+    @Override
+    @RequestMapping(value = {"/countries/{con_id}/regions"}, method = RequestMethod.GET)
     public List<Region> getRegionsByCountry(@PathVariable("con_id") int con_id) {
         List<Region> regionList = conRepository.getRegionsByCountry(con_id);
         if(regionList.size()==0) throw new ResourceNotFoundException("Country id " + con_id + " doesn't exist");
         for(Region region: regionList)
-            region.add(linkTo(methodOn(CountryController.class).getCitiesByRegion(region.getRig_id())).withRel("cities"));
+            region.add(linkTo(methodOn(CountryController.class).getCitiesByRegion(region.getRegion_id())).withRel("cities"));
         return regionList;
     }
 
-    @Override @RequestMapping(value = {"/countries"}, method = RequestMethod.GET)
+    @Override
+    @RequestMapping(value = {"/countries"}, method = RequestMethod.GET)
     @ResponseBody
     public List<Country> getCountries() {
         List<Country> countryList = conRepository.getCountries();
         for(Country country : countryList)
-            country.add(linkTo(methodOn(CountryController.class).getRegionsByCountry(country.getCon_id())).withRel("regions"));
+            country.add(linkTo(methodOn(CountryController.class).getRegionsByCountry(country.getCountry_id())).withRel("regions"));
         return countryList;
     }
 
-    @Override @RequestMapping(value = {"/cities/{city}"}, method = RequestMethod.GET)
+    @Override
+    @RequestMapping(value = {"/cities/{city}"}, method = RequestMethod.GET)
     @ResponseBody
     public List<CityData> searchCities(@PathVariable(value = "city") String name, @RequestParam(defaultValue = "40",value = "results",required = false) int limit,
                                        @RequestParam(defaultValue = "1",value = "page",required = false) int pageNo){
@@ -74,10 +65,12 @@ public class CountryController implements CountryService {
         return cityData;
     }
 
-    @Override @RequestMapping(value = {"/cities"}, method = RequestMethod.POST)
-    public CityData addCityData(WebRequest webRequest) {
-        String cit_name = webRequest.getParameter("city") , rig_name = webRequest.getParameter("region"),
-                con_name = webRequest.getParameter("country");
+    @Override
+    @RequestMapping(value = "/cities", method = RequestMethod.POST, consumes="application/json", produces="application/json;charset=UTF-8")
+    @ResponseBody
+    public CityData addCityData(@RequestBody PostCityData postCityData) {
+        String cit_name = postCityData.getCity(), rig_name = postCityData.getRegion(),
+                con_name = postCityData.getCountry();
 
         if(cit_name!=null && con_name!=null)
         {

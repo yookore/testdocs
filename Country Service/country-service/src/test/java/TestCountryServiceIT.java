@@ -1,5 +1,6 @@
 import com.yookos.countryservice.Application;
 import com.yookos.countryservice.DAO.CountryRepository;
+import com.yookos.countryservice.models.PostCityData;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -9,12 +10,14 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
+import org.springframework.mock.http.MockHttpOutputMessage;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.web.context.WebApplicationContext;
 
 import java.io.File;
+import java.io.IOException;
 import java.nio.charset.Charset;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -202,12 +205,12 @@ public class TestCountryServiceIT {
     @Test
     public void getCitiesByRegion() throws Exception {
         this.RIG_ID = 1;
-        mockMvc.perform(get("/countryservice/regions/"+this.RIG_ID+"/cities"))
+        mockMvc.perform(get("/api/v1/countryservice/regions/"+this.RIG_ID+"/cities"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$.[0]", hasKey("cit_id")))
-                .andExpect(jsonPath("$.[1]", hasKey("cit_name")))
-                .andExpect(jsonPath("$.[2]", hasKey("rig_id")));
+                .andExpect(jsonPath("$.[0]", hasKey("city_id")))
+                .andExpect(jsonPath("$.[1]", hasKey("city_name")))
+                .andExpect(jsonPath("$.[2]", hasKey("region_id")));
     }
 
     /**
@@ -218,12 +221,12 @@ public class TestCountryServiceIT {
     @Test
     public void getRegionsByCountry() throws Exception {
         this.CON_ID = 1;
-        mockMvc.perform(get("/countryservice/countries/"+this.CON_ID+"/regions"))
+        mockMvc.perform(get("/api/v1/countryservice/countries/"+this.CON_ID+"/regions"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$.[1]", hasKey("con_id")))
-                .andExpect(jsonPath("$.[2]", hasKey("rig_name")))
-                .andExpect(jsonPath("$.[3]", hasKey("rig_id")))
+                .andExpect(jsonPath("$.[1]", hasKey("country_id")))
+                .andExpect(jsonPath("$.[2]", hasKey("region_name")))
+                .andExpect(jsonPath("$.[3]", hasKey("region_id")))
                 .andExpect(jsonPath("$.[2]", hasKey("_links")))
                 .andExpect(jsonPath("$.[2]._links", hasKey("cities")))
                 .andExpect(jsonPath("$.[2]._links.cities", hasKey("href")))
@@ -238,11 +241,11 @@ public class TestCountryServiceIT {
     @Test
     public void getCountries() throws Exception {
 
-        mockMvc.perform(get("/countryservice/countries"))
+        mockMvc.perform(get("/api/v1/countryservice/countries"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$.[1]", hasKey("con_id")))
-                .andExpect(jsonPath("$.[2]", hasKey("con_name")))
+                .andExpect(jsonPath("$.[1]", hasKey("country_id")))
+                .andExpect(jsonPath("$.[2]", hasKey("country_name")))
                 .andExpect(jsonPath("$.[2]", hasKey("_links")))
                 .andExpect(jsonPath("$.[2]._links", hasKey("regions")))
                 .andExpect(jsonPath("$.[2]._links.regions", hasKey("href")))
@@ -258,16 +261,16 @@ public class TestCountryServiceIT {
      */
     @Test
     public void searchCities() throws Exception {
-        mockMvc.perform(get("/countryservice/cities/Ain"))
+        mockMvc.perform(get("/api/v1/countryservice/cities/Ain"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$.[0]", hasKey("city")))
                 .andExpect(jsonPath("$.[1]", hasKey("region")))
                 .andExpect(jsonPath("$.[1]", hasKey("country")))
-                .andExpect(jsonPath("$.[0].city", hasKey("cit_name")))
-                .andExpect(jsonPath("$.[0].city.cit_name", containsString("Ain")))
-                .andExpect(jsonPath("$.[0].region", hasKey("rig_name")))
-                .andExpect(jsonPath("$.[0].country", hasKey("con_name")));
+                .andExpect(jsonPath("$.[0].city", hasKey("city_name")))
+                .andExpect(jsonPath("$.[0].city.city_name", containsString("Ain")))
+                .andExpect(jsonPath("$.[0].region", hasKey("region_name")))
+                .andExpect(jsonPath("$.[0].country", hasKey("country_name")));
     }
 
     /**
@@ -277,21 +280,23 @@ public class TestCountryServiceIT {
      */
     @Test
     public void addCityData() throws Exception {
-        mockMvc.perform(post("/countryservice/cities")
-        .contentType(contentType)
-                        .param("city","Kwamhlanga")
-                .param("region","Mpumalanga")
-                .param("country","South Africa")
-        )
+
+        String jsonCityData ="{\"country\":\"South Africa\", \"region\":\"Mpumalanga\", \"city\":\"Kwamhlanga\"}";
+
+        mockMvc.perform(post("/api/v1/countryservice/cities")
+                .contentType("application/json")
+                .content(jsonCityData))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
-                .andExpect(jsonPath("$.city", hasKey("cit_id")))
-                .andExpect(jsonPath("$.region", hasKey("rig_name")))
-                .andExpect(jsonPath("$.country", hasKey("con_name")))
-                .andExpect(jsonPath("$.city.cit_name", is("Kwamhlanga")))
-                .andExpect(jsonPath("$.region.rig_name", is("Mpumalanga")))
-                .andExpect(jsonPath("$.country.con_name", is("South Africa")));
+                .andExpect(jsonPath("$.city", hasKey("city_id")))
+                .andExpect(jsonPath("$.region", hasKey("region_name")))
+                .andExpect(jsonPath("$.country", hasKey("country_name")))
+                .andExpect(jsonPath("$.city.city_name", is("Kwamhlanga")))
+                .andExpect(jsonPath("$.region.region_name", is("Mpumalanga")))
+                .andExpect(jsonPath("$.country.country_name", is("South Africa")));
     }
+
+
 
     /**
      * Close the SQLite database and deletes the test.db file

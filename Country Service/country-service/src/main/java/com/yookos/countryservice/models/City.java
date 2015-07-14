@@ -3,36 +3,36 @@ package com.yookos.countryservice.models;
 public class City {
 
 
-    private int cit_id;
-    private String cit_name;
-    private int rig_id;
+    private int city_id;
+    private String city_name;
+    private int region_id;
     public City(int cit_id, String cit_name, int rig_id) {
-        this.cit_id = cit_id;
-        this.cit_name = cit_name;
-        this.rig_id = rig_id;
+        this.city_id = cit_id;
+        this.city_name = cit_name;
+        this.region_id = rig_id;
     }
 
-    public int getRig_id() {
-        return rig_id;
+    public int getRegion_id() {
+        return region_id;
     }
 
-    public void setRig_id(int rig_id) {
-        this.rig_id = rig_id;
+    public void setRegion_id(int rig_id) {
+        this.region_id = rig_id;
     }
 
-    public long getCit_id() {
-        return cit_id;
+    public long getCity_id() {
+        return city_id;
     }
 
-    public void setCit_id(int cit_id) {
-        this.cit_id = cit_id;
+    public void setCity_id(int cit_id) {
+        this.city_id = cit_id;
     }
 
-    public void setCit_name(String cit_name) {
-        this.cit_name = cit_name;
+    public void setCity_name(String cit_name) {
+        this.city_name = cit_name;
     }
 
-    public String getCit_name() {
-        return cit_name;
+    public String getCity_name() {
+        return city_name;
     }
 }

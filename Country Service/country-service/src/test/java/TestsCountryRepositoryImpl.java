@@ -199,19 +199,19 @@ public class TestsCountryRepositoryImpl {
     public void testAddCityData()
     {
         CityData cityData = conRepository.addCityData("Johannesburg", "Gauteng", "South Africa");
-        assertEquals("City returned unexpected results", "Johannesburg",cityData.getCity().getCit_name());
-        assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRig_name());
-        assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCon_name());
+        assertEquals("City returned unexpected results", "Johannesburg",cityData.getCity().getCity_name());
+        assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRegion_name());
+        assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCountry_name());
 
         cityData = conRepository.addCityData("Randburg", "Gauteng", "South Africa");
-        assertEquals("City returned unexpected results", "Randburg",cityData.getCity().getCit_name());
-        assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRig_name());
-        assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCon_name());
+        assertEquals("City returned unexpected results", "Randburg",cityData.getCity().getCity_name());
+        assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRegion_name());
+        assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCountry_name());
 
         cityData = conRepository.addCityData("Johannesburg", "Other", "South Africa");
-        assertEquals("City returned unexpected results", "Johannesburg",cityData.getCity().getCit_name());
-        assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRig_name());
-        assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCon_name());
+        assertEquals("City returned unexpected results", "Johannesburg",cityData.getCity().getCity_name());
+        assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRegion_name());
+        assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCountry_name());
     }
 
     /**

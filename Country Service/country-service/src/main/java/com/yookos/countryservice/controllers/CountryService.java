@@ -1,9 +1,6 @@
 package com.yookos.countryservice.controllers;
 
-import com.yookos.countryservice.models.City;
-import com.yookos.countryservice.models.CityData;
-import com.yookos.countryservice.models.Country;
-import com.yookos.countryservice.models.Region;
+import com.yookos.countryservice.models.*;
 import org.springframework.hateoas.Resources;
 import org.springframework.web.context.request.WebRequest;
 
@@ -24,6 +21,6 @@ public interface CountryService {
     List<Region> getRegionsByCountry(int con_id);
     List<Country> getCountries();
     List<CityData> searchCities(String name, int limit, int pageNo);
-    CityData addCityData(WebRequest webRequest);
+    CityData addCityData(PostCityData postCityData);
 
 }

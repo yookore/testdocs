@@ -7,29 +7,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Country extends ResourceSupport {
 
-    private int con_id;
-    private String con_name;
+    private int country_id;
+    private String country_name;
 
     @JsonCreator
-    public Country(@JsonProperty("con_id") int con_id,@JsonProperty("con_name") String con_name) {
-        this.con_id = con_id;
-        this.con_name = con_name;
+    public Country(@JsonProperty("country_id") int con_id,@JsonProperty("country_name") String con_name) {
+        this.country_id = con_id;
+        this.country_name = con_name;
     }
 
-    public int getCon_id() {
-        return con_id;
+    public int getCountry_id() {
+        return country_id;
     }
 
-    public void setCon_id(int con_id) {
-        this.con_id = con_id;
+    public void setCountry_id(int con_id) {
+        this.country_id = con_id;
     }
 
 
-    public void setCon_name(String con_name) {
-        this.con_name = con_name;
+    public void setCountry_name(String con_name) {
+        this.country_name = con_name;
     }
 
-    public String getCon_name() {
-        return con_name;
+    public String getCountry_name() {
+        return country_name;
     }
 }

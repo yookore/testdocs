@@ -18,7 +18,7 @@ This method retrieves the json array payload representing list of matched cities
 + Request
     + Method
       ```
-        **GET** /countryservice/cities/:cityname HTTP/1.1
+        **GET** /api/v1/countryservice/cities/:cityname HTTP/1.1
       ```
     + Headers
       ```
@@ -59,7 +59,7 @@ This method method adds a new City together with the given country in the params
 + Request
     + Method
       ```
-      **POST** /countryservice/cities HTTP/1.1
+      **POST** /api/v1/countryservice/cities HTTP/1.1
       ```
     + Headers
       ```
@@ -69,8 +69,10 @@ This method method adds a new City together with the given country in the params
     
     ```
                             ------WebKitFormBoundaryNFVXSZm2W1vSnnBy-------
-    Content-Disposition: form-data; city=“Joburg”; country="South Africa“; region=“Gauteng”(OPTIONAL)
-    Content-Type: multipart/form-data
+    Content-Disposition: raw json; city, country, region(OPTIONAL)
+    Content-Type: application/json;charset=UTF-8
+    ```
+      {"country":"South Africa","region":"Gauteng","city":"“Joburg”"}
     ```
 
     ```
@@ -90,7 +92,7 @@ This method retrieves the json array payload representing list of world countrie
 + Request
     + Method
       ```
-      **GET** /countryservice/countries HTTP/1.1
+      **GET** /api/v1/countryservice/countries HTTP/1.1
       ```
     + Headers
       ```
