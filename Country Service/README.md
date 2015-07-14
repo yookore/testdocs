@@ -90,7 +90,7 @@ This method retrieves the json array payload representing list of world countrie
 + Request
     + Method
       ```
-      **GET** /countryserivce/countries HTTP/1.1
+      **GET** /countryservice/countries HTTP/1.1
       ```
     + Headers
       ```
