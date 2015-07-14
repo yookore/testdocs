@@ -1,9 +1,9 @@
 # CountryService
 
-VM Country Server:
+VM Server:
 >http://192.168.10.20:8081
 
-POC Country Server:
+POC Server:
 >http://
 
 All queries are preceded with the server domain and port in the format
