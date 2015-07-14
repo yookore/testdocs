@@ -63,7 +63,7 @@ This method method adds a new City together with the given country in the params
       ```
     + Headers
       ```
-      Content-Type : multipart/form-data
+      Content-Type : application/json;charset=UTF-8
       ```
     + Payload
     
@@ -71,7 +71,8 @@ This method method adds a new City together with the given country in the params
                             ------WebKitFormBoundaryNFVXSZm2W1vSnnBy-------
     Content-Disposition: raw json; city, country, region(OPTIONAL)
     Content-Type: application/json;charset=UTF-8
-      {"country":"South Africa","region":"Gauteng","city":"“Joburg”"}
+    
+    {"country":"South Africa","region":"Gauteng","city":"“Joburg”"}
     ```
 
     ```
