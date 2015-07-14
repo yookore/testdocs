@@ -1,5 +1,8 @@
 # CountryService
 
+VM Country Server:
+>http://192.168.10.20:8081
+
 POC Country Server:
 >http://
 
