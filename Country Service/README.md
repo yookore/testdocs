@@ -1,9 +1,9 @@
 # CountryService
 
-VM Server:
+VM IP:
 >http://192.168.10.20:8081
 
-POC Server:
+CF IP:
 >http://
 
 All queries are preceded with the server domain and port in the format
@@ -37,14 +37,14 @@ This method retrieves the json array payload representing list of matched cities
     [
         ...
         {
-            “city”: “{“cit_id”:”2983712”,“cit_name”:”Joburg”,”rig_id”:”20181”}”,
-            “region”: “{“rig_id”:”20181”,”rig_name”:”Gauteng”,”con_id”:”213”}”,
-            “country”: “{“con_id”:”213”,”con_name”:”South Africa”}”
+            “city”: “{“city_id”:”2983712”,“city_name”:”Joburg”,”region_id”:”20181”}”,
+            “region”: “{“region_id”:”20181”,”region_name”:”Gauteng”,”country_id”:”213”}”,
+            “country”: “{“country_id”:”213”,”country_name”:”South Africa”}”
         },
         {
-            “city”: “{“cit_id”:”2983712”,“cit_name”:”Joburg”,”rig_id”:”20181”}”,
-            “region”: “{“rig_id”:”20181”,”rig_name”:”Gauteng”,”con_id”:”213”}”,
-            “country”: “{“con_id”:”213”,”con_name”:”South Africa”}”
+            “city”: “{“city_id”:”2983712”,“city_name”:”Joburg”,”region_id”:”20181”}”,
+            “region”: “{“region_id”:”20181”,”region_name”:”Gauteng”,”country_id”:”213”}”,
+            “country”: “{“country_id”:”213”,”country_name”:”South Africa”}”
         }
         ...
     ]
@@ -78,9 +78,9 @@ This method method adds a new City together with the given country in the params
     ```
     + Response Payload (newly added city data)
     {
-        “city”: “{“cit_id”:”2983712”,”rig_id”:”20181”,“cit_name”:”Joburg”}”,
-        “region”: “{“rig_id”:”20181”,”con_id”:”213”,”rig_name”:”Gauteng”}”,
-        “country”: “{“con_id”:”213”,”con_name”:”South Africa”}”
+        “city”: “{“city_id”:”2983712”,”region_id”:”20181”,“city_name”:”Joburg”}”,
+        “region”: “{“region_id”:”20181”,”country_id”:”213”,”region_name”:”Gauteng”}”,
+        “country”: “{“country_id”:”213”,”country_name”:”South Africa”}”
     }
     ```
 
@@ -104,12 +104,12 @@ This method retrieves the json array payload representing list of world countrie
     + Response Payload
     [
         ...
-        {"con_id":1,"con_Name":"Afghanistan","_links":
+        {"country_id":1,"country_name":"Afghanistan","_links":
             {"regions":
                 {"href":"http://localhost:8080/countryservice/countries/1/regions"}
             }
         },
-        {"con_id":2,"con_Name":"Albania","_links":
+        {"country_id":2,"country_name":"Albania","_links":
             {"regions":
                 {"href":"http://localhost:8080/countryservice/countries/2/regions"}
             }
