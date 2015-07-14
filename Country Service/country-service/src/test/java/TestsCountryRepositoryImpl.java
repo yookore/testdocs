@@ -1,9 +1,8 @@
 /**
  * Created by tshiamotaukobong on 15/05/28.
  */
+import com.yookos.countryservice.Application;
 import com.yookos.countryservice.DAO.CountryRepository;
-import com.yookos.countryservice.DAO.Impl.CountryRepositoryImpl;
-
 import com.yookos.countryservice.models.City;
 import com.yookos.countryservice.models.CityData;
 import com.yookos.countryservice.models.Country;
@@ -11,8 +10,10 @@ import com.yookos.countryservice.models.Region;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import static org.junit.Assert.*;
 
@@ -22,10 +23,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.List;
 
-
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringApplicationConfiguration(classes = Application.class)
 public class TestsCountryRepositoryImpl {
 
-    private CountryRepository service =  new CountryRepositoryImpl();
+    @Autowired
+    private CountryRepository conRepository;
+
     /**
      *An embedded database(SQLite) is used for testing purpose. It is created during test and deleted just before the test completes.
       The file is test.db created in root directory of the Intellij Spring Webservice project.
@@ -45,16 +49,6 @@ public class TestsCountryRepositoryImpl {
     @Before
     public void initializes()
     {
-        service.setDbDriver("org.sqlite.JDBC");
-        service.setDbUrl("jdbc:sqlite:test.db");
-        service.setDbPassword("123");
-
-        File databaseFile = new File("test.db");
-        if(databaseFile.exists()) {
-            databaseFile.delete();
-            System.out.println("test.db is deleted");
-        }
-        service.connetToDB();
 
 
         String createCitySql = "CREATE TABLE IF NOT EXISTS `City` (\n" +
@@ -80,9 +74,7 @@ public class TestsCountryRepositoryImpl {
                 "  `rig_modification_date` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP\n" +
                 ") ";
 
-
-
-        Connection con = service.getCon();
+        Connection con = conRepository.getCon();
         if(con!=null)
         {
             try {
@@ -177,8 +169,8 @@ public class TestsCountryRepositoryImpl {
      */
     @Test
     public  void testConnectToDB() throws SQLException {
-        assertNotNull("Database Connection is null",service.getCon());
-        assertTrue("Database Connection is not open",!service.getCon().isClosed());
+        assertNotNull("Database Connection is null", conRepository.getCon());
+        assertTrue("Database Connection is not open", !conRepository.getCon().isClosed());
     }
 
     /**
@@ -188,7 +180,7 @@ public class TestsCountryRepositoryImpl {
     @Test
     public void testSearchCity()
     {
-        List<CityData> cityData = service.searchCities("Ba ", 30, 1);
+        List<CityData> cityData = conRepository.searchCities("Ba ", 30, 1);
         assertNotNull("List of CityData is null",cityData);
         assertTrue(cityData.size()>0);
     }
@@ -206,17 +198,17 @@ public class TestsCountryRepositoryImpl {
     @Test
     public void testAddCityData()
     {
-        CityData cityData = service.addCityData("Johannesburg", "Gauteng", "South Africa");
+        CityData cityData = conRepository.addCityData("Johannesburg", "Gauteng", "South Africa");
         assertEquals("City returned unexpected results", "Johannesburg",cityData.getCity().getCit_name());
         assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRig_name());
         assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCon_name());
 
-        cityData = service.addCityData("Randburg", "Gauteng", "South Africa");
+        cityData = conRepository.addCityData("Randburg", "Gauteng", "South Africa");
         assertEquals("City returned unexpected results", "Randburg",cityData.getCity().getCit_name());
         assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRig_name());
         assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCon_name());
 
-        cityData = service.addCityData("Johannesburg", "Other", "South Africa");
+        cityData = conRepository.addCityData("Johannesburg", "Other", "South Africa");
         assertEquals("City returned unexpected results", "Johannesburg",cityData.getCity().getCit_name());
         assertEquals("City returned unexpected results", "Gauteng",cityData.getRegion().getRig_name());
         assertEquals("City returned unexpected results", "South Africa", cityData.getCountry().getCon_name());
@@ -229,7 +221,7 @@ public class TestsCountryRepositoryImpl {
     @Test
     public void testGetCountries()
     {
-        List<Country> countriesList = service.getCountries();
+        List<Country> countriesList = conRepository.getCountries();
         assertNotNull(countriesList);
         assertTrue(countriesList.size()>0);
     }
@@ -241,7 +233,7 @@ public class TestsCountryRepositoryImpl {
     @Test
     public void testGetRegionsByCountry()
     {
-        List<Region> regionList = service.getRegionsByCountry(3);
+        List<Region> regionList = conRepository.getRegionsByCountry(3);
         assertNotNull(regionList);
         assertTrue(regionList.size()>0);
     }
@@ -253,7 +245,7 @@ public class TestsCountryRepositoryImpl {
     @Test
     public void testCitiesByRegion()
     {
-        List<City> citiesList = service.getCitiesByRegion(127);
+        List<City> citiesList = conRepository.getCitiesByRegion(127);
         assertNotNull(citiesList);
         assertTrue(citiesList.size()>0);
     }
@@ -264,7 +256,7 @@ public class TestsCountryRepositoryImpl {
     @After
     public void closes()
     {
-        service.closeConnection();
+        conRepository.closeConnection();
         File databaseFile = new File("test.db");
         if(databaseFile.exists()) {
             databaseFile.delete();

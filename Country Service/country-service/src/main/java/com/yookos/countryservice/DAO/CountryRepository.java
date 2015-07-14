@@ -22,6 +22,7 @@ public interface CountryRepository {
     CityData addCityData(String cit_name, String rig_name, String con_name);
     void setDbDriver(String dbDriver);
     void setDbUrl(String dbUrl);
+    void setDbUsername(String dbUsername);
     void setDbPassword(String dbPassword);
     Connection getCon();
     void closeConnection();

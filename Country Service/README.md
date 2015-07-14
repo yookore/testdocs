@@ -15,7 +15,7 @@ This method retrieves the json array payload representing list of matched cities
 + Request
     + Method
       ```
-        **GET** /countryserivce/city/:cityname HTTP/1.1
+        **GET** /countryserivce/cities/:cityname HTTP/1.1
       ```
     + Headers
       ```
@@ -56,7 +56,7 @@ This method method adds a new City together with the given country in the params
 + Request
     + Method
       ```
-      **POST** /countryservice/city HTTP/1.1
+      **POST** /countryservice/cities HTTP/1.1
       ```
     + Headers
       ```
@@ -101,12 +101,12 @@ This method retrieves the json array payload representing list of world countrie
         ...
         {"con_id":1,"con_Name":"Afghanistan","_links":
             {"regions":
-                {"href":"http://localhost:8080/countryservice/1/regions"}
+                {"href":"http://localhost:8080/countryservice/countries/1/regions"}
             }
         },
         {"con_id":2,"con_Name":"Albania","_links":
             {"regions":
-                {"href":"http://localhost:8080/countryservice/2/regions"}
+                {"href":"http://localhost:8080/countryservice/countries/2/regions"}
             }
         }
         ...

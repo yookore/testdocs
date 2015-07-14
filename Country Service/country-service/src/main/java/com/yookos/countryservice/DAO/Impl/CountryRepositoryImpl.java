@@ -5,8 +5,11 @@ import com.yookos.countryservice.models.City;
 import com.yookos.countryservice.models.CityData;
 import com.yookos.countryservice.models.Country;
 import com.yookos.countryservice.models.Region;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.env.Environment;
 import org.springframework.hateoas.ResourceSupport;
 import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Repository;
 import org.springframework.stereotype.Service;
 
 import java.sql.*;
@@ -19,17 +22,26 @@ import java.util.List;
  */
 
 public class CountryRepositoryImpl implements CountryRepository {
+
     private Connection con;
     private ResultSet resultSet;
     private Statement statement;
 
-    private String dbDriver = "com.mysql.jdbc.Driver";
-    private String dbUrl = "jdbc:mysql://localhost/countryservice";
-    private String dbUsername = "root";
-    private String dbPassword = "";
+    private String dbDriver = null;
+    private String dbUrl = null;
+    private String dbUsername = null;
+    private String dbPassword = null;
 
 
     public Connection getCon() {
+        try {
+            if(con != null && !con.isClosed())
+                return con;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        connetToDB();
         return con;
     }
 
@@ -47,9 +59,6 @@ public class CountryRepositoryImpl implements CountryRepository {
 
     public void setDbDriver(String dbDriver) {
         this.dbDriver = dbDriver;
-    }
-
-    public CountryRepositoryImpl() {
     }
 
     public String getDbPassword() {

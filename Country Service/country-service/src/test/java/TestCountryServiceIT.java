@@ -1,11 +1,11 @@
 import com.yookos.countryservice.Application;
 import com.yookos.countryservice.DAO.CountryRepository;
-import com.yookos.countryservice.DAO.Impl.CountryRepositoryImpl;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.test.SpringApplicationConfiguration;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -38,7 +38,8 @@ public class TestCountryServiceIT {
     private MediaType contentType = new MediaType(MediaType.APPLICATION_JSON.getType(),
             MediaType.APPLICATION_JSON.getSubtype(),
             Charset.forName("utf8"));
-    private CountryRepository service =  new CountryRepositoryImpl();
+    @Autowired
+    private CountryRepository conRepository;
 
     private MockMvc mockMvc;
     private HttpMessageConverter mappingJackson2HttpMessageConverter;
@@ -46,6 +47,8 @@ public class TestCountryServiceIT {
     private static int RIG_ID = 0, CON_ID = 0;
     private static String CITY = null;
 
+    @Value("${country.service.test.dbFile}")
+    private String dbFile;
 
     @Autowired
     private WebApplicationContext webApplicationContext;
@@ -70,17 +73,12 @@ public class TestCountryServiceIT {
     public void initializes()
     {
         this.mockMvc = webAppContextSetup(webApplicationContext).build();
-        service.setDbDriver("org.sqlite.JDBC");
-        service.setDbUrl("jdbc:sqlite:test.db");
-        service.setDbPassword("123");
 
-        File databaseFile = new File("test.db");
-        if(databaseFile.exists()) {
-            databaseFile.delete();
-            System.out.println("test.db is deleted");
-        }
-        service.connetToDB();
-
+//        File databaseFile = new File(dbFile);
+//        if(databaseFile.exists()) {
+//            databaseFile.delete();
+//            System.out.println(dbFile + " is deleted");
+//        }
 
         String createCitySql = "CREATE TABLE IF NOT EXISTS `City` (\n" +
                 "  `cit_id` INTEGER PRIMARY KEY AUTOINCREMENT,\n" +
@@ -107,7 +105,7 @@ public class TestCountryServiceIT {
 
 
 
-        Connection con = service.getCon();
+        Connection con = conRepository.getCon();
         if(con!=null)
         {
             try {
@@ -204,7 +202,7 @@ public class TestCountryServiceIT {
     @Test
     public void getCitiesByRegion() throws Exception {
         this.RIG_ID = 1;
-        mockMvc.perform(get("/countryservice/"+this.RIG_ID+"/cities"))
+        mockMvc.perform(get("/countryservice/regions/"+this.RIG_ID+"/cities"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$.[0]", hasKey("cit_id")))
@@ -220,12 +218,16 @@ public class TestCountryServiceIT {
     @Test
     public void getRegionsByCountry() throws Exception {
         this.CON_ID = 1;
-        mockMvc.perform(get("/countryservice/"+this.CON_ID+"/regions"))
+        mockMvc.perform(get("/countryservice/countries/"+this.CON_ID+"/regions"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$.[1]", hasKey("con_id")))
                 .andExpect(jsonPath("$.[2]", hasKey("rig_name")))
-                .andExpect(jsonPath("$.[3]", hasKey("rig_id")));
+                .andExpect(jsonPath("$.[3]", hasKey("rig_id")))
+                .andExpect(jsonPath("$.[2]", hasKey("_links")))
+                .andExpect(jsonPath("$.[2]._links", hasKey("cities")))
+                .andExpect(jsonPath("$.[2]._links.cities", hasKey("href")))
+                .andExpect(jsonPath("$.[2]._links.cities.href", endsWith("/countryservice/regions/3/cities")));
     }
 
     /**
@@ -240,7 +242,11 @@ public class TestCountryServiceIT {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$.[1]", hasKey("con_id")))
-                .andExpect(jsonPath("$.[2]", hasKey("con_name")));
+                .andExpect(jsonPath("$.[2]", hasKey("con_name")))
+                .andExpect(jsonPath("$.[2]", hasKey("_links")))
+                .andExpect(jsonPath("$.[2]._links", hasKey("regions")))
+                .andExpect(jsonPath("$.[2]._links.regions", hasKey("href")))
+                .andExpect(jsonPath("$.[2]._links.regions.href", endsWith("/countryservice/countries/3/regions")));
     }
 
     /**
@@ -252,7 +258,7 @@ public class TestCountryServiceIT {
      */
     @Test
     public void searchCities() throws Exception {
-        mockMvc.perform(get("/countryservice/city/Ain"))
+        mockMvc.perform(get("/countryservice/cities/Ain"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(contentType))
                 .andExpect(jsonPath("$.[0]", hasKey("city")))
@@ -271,7 +277,7 @@ public class TestCountryServiceIT {
      */
     @Test
     public void addCityData() throws Exception {
-        mockMvc.perform(post("/countryservice/city")
+        mockMvc.perform(post("/countryservice/cities")
         .contentType(contentType)
                         .param("city","Kwamhlanga")
                 .param("region","Mpumalanga")
@@ -293,11 +299,11 @@ public class TestCountryServiceIT {
     @After
     public void closes()
     {
-        service.closeConnection();
-        File databaseFile = new File("test.db");
+        conRepository.closeConnection();
+        File databaseFile = new File(dbFile);
         if(databaseFile.exists()) {
             databaseFile.delete();
-            System.out.println("test.db is deleted");
-        }else System.out.println("test.db is not deleted");
+            System.out.println(dbFile + " is deleted");
+        }else System.out.println(dbFile + " is not deleted");
     }
 }
