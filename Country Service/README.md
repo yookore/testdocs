@@ -4,12 +4,12 @@ VM IP:
 >http://192.168.10.20:8081
 
 CF IP:
->http://
+> (currently not provisioned for CF)
 
 All queries are preceded with the server domain and port in the format
 ``http://<server_ip>:<server_port>``
 
-The CountryService is able to search a cities from the database returning with their Country and Region/Province; Also able to add/update new Cities which are not available in  database together with their countries and regions. And is able to get a list of countries with links pointing to their list of regions and list of regions with links pointing to their list of cities.
+The CountryService is able to search for cities from it's database of cities, returning a city with it's Country and Region/Province. It is also able to add new Cities and update existing ones to it's  database (along with the new city's country and region). 
 
 ## Queries
 
@@ -25,11 +25,11 @@ This method retrieves the json array payload representing list of matched cities
       Content-Type : application/json
       ```
       
-    -——-Params——--
-    <br/>
+    + Params
     ```
-        optional query params with default values:
-        limit=“40”; page=“1”;
+        limit (optional; default=40) 
+	page (optional; default=1)
+	<!-- note to Tshiamo - you don't ask clients to pass default parameters in the docs. You code them into your end-point method. You do however inform them about it -->
     ```
     
     ```
@@ -48,12 +48,12 @@ This method retrieves the json array payload representing list of matched cities
         }
         ...
     ]
-    ```
+    
 
 ------------------------------------------------------------------------------
 
 
-### Adds a new City
+### Add a new City
 This method method adds a new City together with the given country in the params(region optional param) or updates the country’s cities if the country already exists.
 
 + Request
@@ -68,7 +68,6 @@ This method method adds a new City together with the given country in the params
     + Payload
     
     ```
-                            ------WebKitFormBoundaryNFVXSZm2W1vSnnBy-------
     Content-Disposition: raw json; city, country, region(OPTIONAL)
     Content-Type: application/json;charset=UTF-8
     
