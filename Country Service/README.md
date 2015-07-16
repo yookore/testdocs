@@ -37,14 +37,14 @@ This method retrieves the json array payload representing list of matched cities
     [
         ...
         {
-            “city”: “{“city_id”:”2983712”,“city_name”:”Joburg”,”region_id”:”20181”}”,
-            “region”: “{“region_id”:”20181”,”region_name”:”Gauteng”,”country_id”:”213”}”,
-            “country”: “{“country_id”:”213”,”country_name”:”South Africa”}”
+            “city”: “{“cityId”:”2983712”,“cityName”:”Joburg”,”regionId”:”20181”}”,
+            “region”: “{“regionId”:”20181”,”regionName”:”Gauteng”,”countryId”:”213”}”,
+            “country”: “{“countryId”:”213”,”countryName”:”South Africa”}”
         },
         {
-            “city”: “{“city_id”:”2983712”,“city_name”:”Joburg”,”region_id”:”20181”}”,
-            “region”: “{“region_id”:”20181”,”region_name”:”Gauteng”,”country_id”:”213”}”,
-            “country”: “{“country_id”:”213”,”country_name”:”South Africa”}”
+            “city”: “{“cityId”:”2983712”,“cityName”:”Joburg”,”regionId”:”20181”}”,
+            “region”: “{“regionId”:”20181”,”regionName”:”Gauteng”,”countryId”:”213”}”,
+            “country”: “{“countryId”:”213”,”countryName”:”South Africa”}”
         }
         ...
     ]
@@ -78,9 +78,9 @@ This method method adds a new City together with the given country in the params
     ```
     + Response Payload (newly added city data)
     {
-        “city”: “{“city_id”:”2983712”,”region_id”:”20181”,“city_name”:”Joburg”}”,
-        “region”: “{“region_id”:”20181”,”country_id”:”213”,”region_name”:”Gauteng”}”,
-        “country”: “{“country_id”:”213”,”country_name”:”South Africa”}”
+        “city”: “{“cityId”:”2983712”,”regionId”:”20181”,“cityName”:”Joburg”}”,
+        “region”: “{“regionId”:”20181”,”countryId”:”213”,”regionName”:”Gauteng”}”,
+        “country”: “{“countryId”:”213”,”countryName”:”South Africa”}”
     }
     ```
 
@@ -104,12 +104,12 @@ This method retrieves the json array payload representing list of world countrie
     + Response Payload
     [
         ...
-        {"country_id":1,"country_name":"Afghanistan","_links":
+        {"countryId":1,"countryName":"Afghanistan","countryCode":"ZA","countryDialCode":"+27","_links":
             {"regions":
                 {"href":"http://localhost:8080/countryservice/countries/1/regions"}
             }
         },
-        {"country_id":2,"country_name":"Albania","_links":
+        {"countryId":2,"countryName":"Albania","countryCode":"ZA","countryDialCode":"+27","_links":
             {"regions":
                 {"href":"http://localhost:8080/countryservice/countries/2/regions"}
             }
