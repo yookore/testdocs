@@ -26,10 +26,10 @@ This method retrieves the json array payload representing list of matched cities
       ```
       
     + Params
-    ```
+    	```
         - limit (optional; default=40) 
 	- page (optional; default=1)
-    ```
+    	```
     
     ```
     + Response Payload
