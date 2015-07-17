@@ -47,7 +47,7 @@ This method retrieves the json array payload representing list of matched cities
         }
         ...
     ]
-    
+    ```    
 
 ------------------------------------------------------------------------------
 
