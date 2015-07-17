@@ -27,9 +27,8 @@ This method retrieves the json array payload representing list of matched cities
       
     + Params
     ```
-        limit (optional; default=40) 
-	page (optional; default=1)
-	<!-- note to Tshiamo - you don't ask clients to pass default parameters in the docs. You code them into your end-point method. You do however inform them about it -->
+        - limit (optional; default=40) 
+	- page (optional; default=1)
     ```
     
     ```
