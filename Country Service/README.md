@@ -36,14 +36,14 @@ This method retrieves the json array payload representing list of matched cities
     [
         ...
         {
-            “city”: “{“cityId”:”2983712”,“cityName”:”Joburg”,”regionId”:”20181”}”,
-            “region”: “{“regionId”:”20181”,”regionName”:”Gauteng”,”countryId”:”213”}”,
-            “country”: “{“countryId”:”213”,”countryName”:”South Africa”}”
+            "city": {"id": 491707,"name": "“Joburg”","regionId": 4814},
+            "region": {"id": 4814,"name": "Other","countryId": 190},
+            "country": {"id": 190,"name": "South Africa"}
         },
         {
-            “city”: “{“cityId”:”2983712”,“cityName”:”Joburg”,”regionId”:”20181”}”,
-            “region”: “{“regionId”:”20181”,”regionName”:”Gauteng”,”countryId”:”213”}”,
-            “country”: “{“countryId”:”213”,”countryName”:”South Africa”}”
+            "city": {"id": 491707,"name": "“Joburg”","regionId": 4814},
+            "region": {"id": 4814,"name": "Other","countryId": 190},
+            "country": {"id": 190,"name": "South Africa"}
         }
         ...
     ]
@@ -76,9 +76,9 @@ This method method adds a new City together with the given country in the params
     ```
     + Response Payload (newly added city data)
     {
-        “city”: “{“cityId”:”2983712”,”regionId”:”20181”,“cityName”:”Joburg”}”,
-        “region”: “{“regionId”:”20181”,”countryId”:”213”,”regionName”:”Gauteng”}”,
-        “country”: “{“countryId”:”213”,”countryName”:”South Africa”}”
+        "city": {"id": 491707,"name": "“Joburg”","regionId": 4814},
+        "region": {"id": 4814,"name": "Other","countryId": 190},
+        "country": {"id": 190,"name": "South Africa"}
     }
     ```
 
@@ -102,14 +102,25 @@ This method retrieves the json array payload representing list of world countrie
     + Response Payload
     [
         ...
-        {"countryId":1,"countryName":"Afghanistan","countryCode":"ZA","countryDialCode":"+27","_links":
-            {"regions":
-                {"href":"http://localhost:8080/countryservice/countries/1/regions"}
+        {
+        "id": 3,
+        "name": "Algeria",
+        "iso": "DZ",
+        "dialCode": "+213",
+        "_links": {
+            "regions": {
+                "href": "http://localhost:8081/api/v1/countryservice/countries/3/regions"
             }
-        },
-        {"countryId":2,"countryName":"Albania","countryCode":"ZA","countryDialCode":"+27","_links":
-            {"regions":
-                {"href":"http://localhost:8080/countryservice/countries/2/regions"}
+        }
+    	},
+    	{
+        "id": 4,
+        "name": "American Samoa",
+        "iso": "AS",
+        "dialCode": "+1",
+        "_links": {
+            "regions": {
+                "href": "http://localhost:8081/api/v1/countryservice/countries/4/regions"
             }
         }
         ...
