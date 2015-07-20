@@ -18,7 +18,45 @@ This method retrieves the json array payload representing list of matched cities
 + Request
     + Method
       ```
-        **GET** /api/v1/countryservice/cities/:cityname HTTP/1.1
+        **GET** /api/v1/countryservice/cities/{cityname} HTTP/1.1
+      ```
+    + Headers
+      ```
+      Content-Type : application/json
+      ```
+      
+    + Params
+    	```
+        - limit (optional; default=40) 
+	- page (optional; default=1)
+    	```
+    
+    ```
+    + Response Payload
+    [
+        ...
+        {
+            "city": {"id": 491707,"name": "“Joburg”","regionId": 4814},
+            "region": {"id": 4814,"name": "Other","countryId": 190},
+            "country": {"id": 190,"name": "South Africa"}
+        },
+        {
+            "city": {"id": 491707,"name": "“Joburg”","regionId": 4814},
+            "region": {"id": 4814,"name": "Other","countryId": 190},
+            "country": {"id": 190,"name": "South Africa"}
+        }
+        ...
+    ]
+    ```    
+
+------------------------------------------------------------------------------
+
+### Get searched cities data under specific country
+This method retrieves the json array payload representing list of matched cities data.
++ Request
+    + Method
+      ```
+        **GET** /api/v1/countryservice/countries/{countryId}/cities/{cityname} HTTP/1.1
       ```
     + Headers
       ```
@@ -123,6 +161,49 @@ This method retrieves the json array payload representing list of world countrie
                 "href": "http://localhost:8081/api/v1/countryservice/countries/4/regions"
             }
         }
+        ...
+    ]
+    ```
+
+------------------------------------------------------------------------------
+
+### Get list of regions under specific country
+This method retrieves the json array payload representing list of regions.
++ Request
+    + Method
+      ```
+      **GET** /api/v1/countryservice/countries/{regionId}/regions HTTP/1.1
+      ```
+    + Headers
+      ```
+      Content-Type : application/json
+      ```
+    + Payload
+    
+    ```
+    + Response Payload
+    [
+        ...
+        {
+        "id": 4024,
+        "name": "Gauteng",
+        "countryId": 190,
+        "_links": {
+            "cities": {
+                "href": "http://localhost:8081/api/v1/countryservice/regions/4024/cities"
+            }
+        }
+        },
+        {
+        "id": 4025,
+        "name": "KwaZulu Natal",
+        "countryId": 190,
+        "_links": {
+            "cities": {
+                "href": "http://localhost:8081/api/v1/countryservice/regions/4025/cities"
+            }
+        }
+    }
         ...
     ]
     ```
