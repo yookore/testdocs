@@ -172,7 +172,7 @@ This method retrieves the json array payload representing list of regions.
 + Request
     + Method
       ```
-      **GET** /api/v1/countryservice/countries/{regionId}/regions HTTP/1.1
+      **GET** /api/v1/countryservice/countries/{countryId}/regions HTTP/1.1
       ```
     + Headers
       ```
@@ -204,6 +204,39 @@ This method retrieves the json array payload representing list of regions.
             }
         }
     }
+        ...
+    ]
+    ```
+
+------------------------------------------------------------------------------
+
+### Get list of cities under specific region
+This method retrieves the json array payload representing list of cities.
++ Request
+    + Method
+      ```
+      **GET** /api/v1/countryservice/regions/{regionId}/cities HTTP/1.1
+      ```
+    + Headers
+      ```
+      Content-Type : application/json
+      ```
+    + Payload
+    
+    ```
+    + Response Payload
+    [
+        ...
+        {
+        "id": 377641,
+        "name": "Johannesburg",
+        "regionId": 4024
+        },
+        {
+        "id": 377642,
+        "name": "Krugersdorp",
+        "regionId": 4024
+        }
         ...
     ]
     ```
