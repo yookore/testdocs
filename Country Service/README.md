@@ -114,7 +114,7 @@ This method method adds a new City together with the given country in the params
     ```
     + Response Payload (newly added city data)
     {
-        "city": {"id": 491707,"name": "“Joburg”","regionId": 4814},
+        "city": {"id": 491707,"name": "Joburg","regionId": 4814},
         "region": {"id": 4814,"name": "Other","countryId": 190},
         "country": {"id": 190,"name": "South Africa"}
     }
